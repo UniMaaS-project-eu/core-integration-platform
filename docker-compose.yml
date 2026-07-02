@@ -1,0 +1,41 @@
+services:
+  core-integration-platform:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: unimaas/core-integration-platform:dev
+    container_name: unimaas-core-integration-platform
+    ports:
+      - "8000:8000"
+    environment:
+      PYTHONUNBUFFERED: "1"
+      APP_ENV: ${APP_ENV:-development}
+      REQUEST_TIMEOUT_SECONDS: ${REQUEST_TIMEOUT_SECONDS:-10}
+      IC1_EDC_BASE_URL: ${IC1_EDC_BASE_URL:-}
+      IC1_EDC_AUTH_TOKEN: ${IC1_EDC_AUTH_TOKEN:-}
+      IC3_KNOWLEDGE_GRAPH_BASE_URL: ${IC3_KNOWLEDGE_GRAPH_BASE_URL:-}
+      IC3_KNOWLEDGE_GRAPH_AUTH_TOKEN: ${IC3_KNOWLEDGE_GRAPH_AUTH_TOKEN:-}
+      IC4_FEDERATED_CATALOGUE_BASE_URL: ${IC4_FEDERATED_CATALOGUE_BASE_URL:-}
+      IC4_FEDERATED_CATALOGUE_AUTH_TOKEN: ${IC4_FEDERATED_CATALOGUE_AUTH_TOKEN:-}
+      IC5_RESOURCE_MONITORING_BASE_URL: ${IC5_RESOURCE_MONITORING_BASE_URL:-}
+      IC5_RESOURCE_MONITORING_AUTH_TOKEN: ${IC5_RESOURCE_MONITORING_AUTH_TOKEN:-}
+      IC6_IAM_GOVERNANCE_BASE_URL: ${IC6_IAM_GOVERNANCE_BASE_URL:-}
+      IC6_IAM_GOVERNANCE_AUTH_TOKEN: ${IC6_IAM_GOVERNANCE_AUTH_TOKEN:-}
+      IC7_DPP_BASE_URL: ${IC7_DPP_BASE_URL:-}
+      IC7_DPP_AUTH_TOKEN: ${IC7_DPP_AUTH_TOKEN:-}
+      IC11_CHATBOT_BASE_URL: ${IC11_CHATBOT_BASE_URL:-}
+      IC11_CHATBOT_AUTH_TOKEN: ${IC11_CHATBOT_AUTH_TOKEN:-}
+      IC15_ORCHESTRATOR_BASE_URL: ${IC15_ORCHESTRATOR_BASE_URL:-}
+      IC15_ORCHESTRATOR_AUTH_TOKEN: ${IC15_ORCHESTRATOR_AUTH_TOKEN:-}
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "python",
+          "-c",
+          "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health', timeout=2).read()",
+        ]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+      start_period: 10s
