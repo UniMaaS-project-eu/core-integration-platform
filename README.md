@@ -1,5 +1,10 @@
 # UniMaaS Core Integration Platform
 
+[![Python](https://img.shields.io/badge/python-3.11%2B-3776AB?logo=python&logoColor=white)](https://www.python.org/)
+[![FastAPI](https://img.shields.io/badge/FastAPI-0.115%2B-009688?logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com/)
+[![uv](https://img.shields.io/badge/uv-package%20manager-DE5FE9)](https://docs.astral.sh/uv/)
+[![Docker](https://img.shields.io/badge/Docker-Compose-2496ED?logo=docker&logoColor=white)](https://docs.docker.com/compose/)
+
 FastAPI backend-for-frontend for IC17, the UniMaaS Core Integration Platform.
 
 Keep `pyproject.toml` and `uv.lock` tracked. Docker uses them for reproducible production dependency installs.
