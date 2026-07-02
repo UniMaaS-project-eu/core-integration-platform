@@ -40,6 +40,25 @@ def test_edc_connector_openapi_contains_rdf_extension_models() -> None:
     assert "HttpProxyPullTransferRequest" in schemas
 
 
+def test_knowledge_graph_openapi_matches_central_kg_routes() -> None:
+    response = client.get("/openapi.json")
+    assert response.status_code == 200
+    payload = response.json()
+    paths = payload["paths"]
+    schemas = payload["components"]["schemas"]
+    assert "/knowledge-graph" in paths
+    assert "/knowledge-graph/classes" in paths
+    assert "/knowledge-graph/instances" in paths
+    assert "/knowledge-graph/properties" in paths
+    assert "/knowledge-graph/instance" in paths
+    assert "/knowledge-graph/instances/by-property" in paths
+    assert "/knowledge-graph/instances/by-property-value" in paths
+    assert "/knowledge-graph/sparql" in paths
+    assert "/knowledge-graph/msc/get_stage" in paths
+    assert "/knowledge-graph/msc/get_all_stages" in paths
+    assert "SPARQLQuery" in schemas
+
+
 def test_blocked_infrastructure_route_returns_named_missing_inputs() -> None:
     response = client.get("/infrastructure-status/assets")
     assert response.status_code == 501

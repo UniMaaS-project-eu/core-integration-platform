@@ -18,13 +18,11 @@ class SearchResponse(BaseModel):
     source_status: str
 
 
-class SparqlQueryRequest(BaseModel):
-    query: str = Field(..., description="SPARQL query aligned to the MSC ontology.")
-
-
-class SparqlQueryResponse(BaseModel):
-    source_component: str
-    accepted: bool
+class CentralKgResponse(BaseModel):
+    source_component: str = "IC3 Knowledge Graph"
     source_status: str
-    rows: list[dict[str, Any]]
+    data: Any | None = None
 
+
+class SPARQLQuery(BaseModel):
+    query: str = Field(..., description="Raw SPARQL query accepted by the Central KG API.")
