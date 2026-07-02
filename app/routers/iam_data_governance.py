@@ -1,22 +1,21 @@
 from fastapi import APIRouter
 
-from app.schemas.registration import (
+from app.schemas.iam_data_governance import (
     AuthorizationCheckRequest,
     AuthorizationCheckResponse,
     RegistrationRequest,
     RegistrationResponse,
 )
-from app.services import registration_service
+from app.services import iam_data_governance_service
 
-router = APIRouter(prefix="/registration", tags=["registration"])
+router = APIRouter(prefix="/registration", tags=["ic6-iam-data-governance"])
 
 
 @router.post("/participants", response_model=RegistrationResponse)
 def register_participant(payload: RegistrationRequest) -> RegistrationResponse:
-    return registration_service.register_participant(payload)
+    return iam_data_governance_service.register_participant(payload)
 
 
 @router.post("/authorize", response_model=AuthorizationCheckResponse)
 def authorize(payload: AuthorizationCheckRequest) -> AuthorizationCheckResponse:
-    return registration_service.authorize(payload)
-
+    return iam_data_governance_service.authorize(payload)

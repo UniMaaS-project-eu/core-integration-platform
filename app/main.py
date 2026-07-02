@@ -1,17 +1,26 @@
 from fastapi import FastAPI
 
-from app.routers import chatbot_orders, dpp, infrastructure_status, integration, order_status, provider_assets, registration, search
+from app.routers import (
+    cloud_mfg_orchestrator,
+    dpp_infrastructure,
+    edc_connector,
+    iam_data_governance,
+    integration,
+    intent_chatbot,
+    knowledge_graph,
+    resource_monitoring,
+)
 
 
 OPENAPI_TAGS = [
-    {"name": "dashboard", "description": "Top-level dashboard shell and aggregated platform state."},
-    {"name": "registration", "description": "Provider/client onboarding, identity, role, and authorization flows."},
-    {"name": "search", "description": "Customer search over catalogue, EDC assets, and semantic knowledge graph data."},
-    {"name": "provider-assets", "description": "Provider-facing service and dataset publication flows."},
-    {"name": "chatbot-orders", "description": "Order creation and order intent mediation for the chatbot UI."},
-    {"name": "order-status", "description": "Order and workflow execution state from the Cloud Manufacturing Orchestrator."},
-    {"name": "infrastructure-status", "description": "Infrastructure monitoring views backed by the Resource Monitoring Engine."},
-    {"name": "dpp", "description": "Digital Product Passport product lifecycle read and manage flows."},
+    {"name": "ic1-edc-connector", "description": "UniMaaS EDC Connector integration."},
+    {"name": "ic3-knowledge-graph", "description": "Knowledge Graph integration."},
+    {"name": "ic4-federated-catalogue", "description": "Federated Catalogue integration."},
+    {"name": "ic5-resource-monitoring", "description": "Resource Monitoring Engine integration."},
+    {"name": "ic6-iam-data-governance", "description": "IAM and Data Governance integration."},
+    {"name": "ic7-dpp-infrastructure", "description": "DPP Infrastructure integration."},
+    {"name": "ic11-intent-chatbot", "description": "Intent-Based Servitisation/Chatbot integration."},
+    {"name": "ic15-cloud-mfg-orchestrator", "description": "Cloud Manufacturing Orchestrator integration."},
     {"name": "integration", "description": "Service healthcheck."},
 ]
 
@@ -23,19 +32,19 @@ def create_app() -> FastAPI:
         summary="IC17 backend-for-frontend for UniMaaS frontend components.",
         description=(
             "FastAPI backend for the Core Integration Platform. "
-            "Routes are grouped by frontend capability so CEL can consume one Swagger/OpenAPI surface."
+            "Routes are grouped by downstream component so each integration point is visible in Swagger."
         ),
         openapi_tags=OPENAPI_TAGS,
     )
 
     app.include_router(integration.router)
-    app.include_router(registration.router)
-    app.include_router(search.router)
-    app.include_router(provider_assets.router)
-    app.include_router(chatbot_orders.router)
-    app.include_router(order_status.router)
-    app.include_router(infrastructure_status.router)
-    app.include_router(dpp.router)
+    app.include_router(iam_data_governance.router)
+    app.include_router(knowledge_graph.router)
+    app.include_router(edc_connector.router)
+    app.include_router(intent_chatbot.router)
+    app.include_router(cloud_mfg_orchestrator.router)
+    app.include_router(resource_monitoring.router)
+    app.include_router(dpp_infrastructure.router)
 
     return app
 

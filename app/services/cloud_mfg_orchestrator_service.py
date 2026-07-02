@@ -1,4 +1,4 @@
-from app.schemas.workflows import WorkflowListResponse, WorkflowSummary
+from app.schemas.cloud_mfg_orchestrator import WorkflowListResponse, WorkflowSummary
 from app.services.configuration import configured
 from app.settings import Settings
 

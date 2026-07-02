@@ -1,4 +1,4 @@
-from app.schemas.registration import (
+from app.schemas.iam_data_governance import (
     AuthorizationCheckRequest,
     AuthorizationCheckResponse,
     RegistrationRequest,
@@ -28,4 +28,3 @@ def authorize(payload: AuthorizationCheckRequest) -> AuthorizationCheckResponse:
         reason=f"No final IC6 authorization contract is available for action '{payload.action}'.",
         missing_inputs=["Authorization request/response schema", "Policy metadata shape", "Token validation rules"],
     )
-

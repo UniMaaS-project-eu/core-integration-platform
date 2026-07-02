@@ -1,5 +1,5 @@
-from app.schemas.provider_assets import AssetRegistrationRequest, AssetRegistrationResponse
-from app.schemas.search import SearchResult
+from app.schemas.edc_connector import AssetRegistrationRequest, AssetRegistrationResponse
+from app.schemas.knowledge_graph import SearchResult
 from app.services.configuration import configured
 from app.settings import Settings
 

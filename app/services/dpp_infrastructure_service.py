@@ -1,4 +1,4 @@
-from app.schemas.dpp import DppProduct, DppProductResponse, DppProductUpsertRequest
+from app.schemas.dpp_infrastructure import DppProduct, DppProductResponse, DppProductUpsertRequest
 from app.services.configuration import configured
 from app.settings import Settings
 

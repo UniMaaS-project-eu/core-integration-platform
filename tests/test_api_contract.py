@@ -6,19 +6,19 @@ from app.main import app
 client = TestClient(app)
 
 
-def test_openapi_contains_frontend_tags() -> None:
+def test_openapi_contains_downstream_component_tags() -> None:
     response = client.get("/openapi.json")
     assert response.status_code == 200
     tag_names = {tag["name"] for tag in response.json()["tags"]}
     assert {
-        "dashboard",
-        "registration",
-        "search",
-        "provider-assets",
-        "chatbot-orders",
-        "order-status",
-        "infrastructure-status",
-        "dpp",
+        "ic1-edc-connector",
+        "ic3-knowledge-graph",
+        "ic4-federated-catalogue",
+        "ic5-resource-monitoring",
+        "ic6-iam-data-governance",
+        "ic7-dpp-infrastructure",
+        "ic11-intent-chatbot",
+        "ic15-cloud-mfg-orchestrator",
     }.issubset(tag_names)
 
 
@@ -36,7 +36,7 @@ def test_blocked_infrastructure_route_returns_named_missing_inputs() -> None:
     assert "API spec" in detail["missing_inputs"]
 
 
-def test_designable_order_status_route_returns_workflow_shape() -> None:
+def test_cloud_mfg_orchestrator_route_returns_workflow_shape() -> None:
     response = client.get("/order-status/workflows?order_id=order-123")
     assert response.status_code == 200
     payload = response.json()

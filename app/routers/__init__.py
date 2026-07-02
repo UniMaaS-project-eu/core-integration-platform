@@ -1,2 +1,1 @@
-"""FastAPI routers grouped by frontend capability."""
-
+"""FastAPI routers grouped by downstream component."""

@@ -1,9 +1,9 @@
-from app.schemas.search import SearchResponse, SearchResult, SparqlQueryRequest, SparqlQueryResponse
+from app.schemas.knowledge_graph import SearchResponse, SearchResult, SparqlQueryRequest, SparqlQueryResponse
 from app.services.configuration import configured
 from app.settings import Settings
 
 
-def search_services(query: str, limit: int, settings: Settings) -> SearchResponse:
+def search_catalogue(query: str, limit: int, settings: Settings) -> SearchResponse:
     return SearchResponse(
         query=query,
         results=[

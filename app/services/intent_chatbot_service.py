@@ -1,4 +1,4 @@
-from app.schemas.orders import OrderIntentRequest, OrderIntentResponse
+from app.schemas.intent_chatbot import OrderIntentRequest, OrderIntentResponse
 
 
 def create_order_intent(payload: OrderIntentRequest) -> OrderIntentResponse:
@@ -26,4 +26,3 @@ def get_order_intent(order_id: str) -> OrderIntentResponse:
             "Order status mapping",
         ],
     )
-
