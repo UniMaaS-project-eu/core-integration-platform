@@ -1,4 +1,4 @@
-from app.schemas.edc_connector import AssetRegistrationRequest, AssetRegistrationResponse
+from app.schemas.edc_connector import AssetRegistrationResponse, RdfServiceAssetRegistrationRequest, RdfTransferRequest, RdfTransferResponse
 from app.schemas.knowledge_graph import SearchResult
 from app.services.configuration import configured
 from app.settings import Settings
@@ -21,15 +21,31 @@ def list_provider_assets(provider_id: str | None, settings: Settings) -> list[Se
     ]
 
 
-def register_provider_asset(payload: AssetRegistrationRequest) -> AssetRegistrationResponse:
+def register_rdf_service_asset(payload: RdfServiceAssetRegistrationRequest) -> AssetRegistrationResponse:
     return AssetRegistrationResponse(
-        asset_id=f"draft-asset-{payload.asset_name.lower().replace(' ', '-')}",
-        status="pending_edc_contract",
+        asset_id=payload.asset_id,
+        status="pending_edc_deployment",
+        service_type=payload.data_address.service_type,
         required_backend="IC1 UniMaaS EDC Connector",
         missing_inputs=[
             "Final EDC management API URL",
             "Authentication mechanism",
-            "Exact RDFService registration payload expected by the deployed connector",
-            "Supported transfer initiation endpoints",
+            "Exact deployed EDC version",
+            "Final UniMaaS dataset property conventions",
+        ],
+    )
+
+
+def initiate_rdf_transfer(payload: RdfTransferRequest) -> RdfTransferResponse:
+    return RdfTransferResponse(
+        asset_id=payload.asset_id,
+        status="pending_edc_deployment",
+        transfer_type=payload.transfer_type,
+        required_backend="IC1 UniMaaS EDC Connector",
+        missing_inputs=[
+            "Final EDC transfer endpoint URL",
+            "Authentication mechanism",
+            "Contract negotiation/agreement flow",
+            "Runtime policy for RDFSink push versus HttpProxy pull",
         ],
     )

@@ -26,7 +26,7 @@ flowchart LR
 
 | Component                      | Partner | Frontend capability                                                                      | Readiness | Notes                                                                                 |
 | ------------------------------ | ------- | ---------------------------------------------------------------------------------------- | --------- | ------------------------------------------------------------------------------------- |
-| IC1 UniMaaS EDC Connector      | FLM     | Dataset registration and transfer initiation from search/provider flows                  | Partial   | EDC/RDF direction is known, but final URL, auth, EDC version and endpoint list are missing. |
+| IC1 UniMaaS EDC Connector      | FLM     | Dataset registration and transfer initiation from search/provider flows                  | Partial   | RDFService and RDFSink payload shapes are known from `edc-rdf`; final URL, auth, EDC version and endpoint list are missing. |
 | IC3 Knowledge Graph            | FLM     | Customer search and semantic query support                                               | Partial   | SPARQL/MSC ontology direction is known, but query shapes and response formats are missing. |
 | IC4 Federated Catalogue        | FLM     | Catalogue search/read for customer search                                                | Ready     | EDC federated catalogue management API is available as the starting contract.             |
 | IC5 Resource Monitoring Engine | NTUA    | Infrastructure status and monitoring views                                               | Not ready | API spec, data model and polling/streaming approach are missing.                         |

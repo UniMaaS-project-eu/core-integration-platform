@@ -28,6 +28,18 @@ def test_healthcheck_returns_ok() -> None:
     assert response.json()["status"] == "ok"
 
 
+def test_edc_connector_openapi_contains_rdf_extension_models() -> None:
+    response = client.get("/openapi.json")
+    assert response.status_code == 200
+    schemas = response.json()["components"]["schemas"]
+    assert "RdfServiceAssetRegistrationRequest" in schemas
+    assert "SparqlEndpointRdfService" in schemas
+    assert "HttpEndpointRdfService" in schemas
+    assert "FileRdfService" in schemas
+    assert "RdfSinkPushTransferRequest" in schemas
+    assert "HttpProxyPullTransferRequest" in schemas
+
+
 def test_blocked_infrastructure_route_returns_named_missing_inputs() -> None:
     response = client.get("/infrastructure-status/assets")
     assert response.status_code == 501
