@@ -14,7 +14,7 @@ flowchart LR
   IC17 -- "X" --> RME["IC5 Resource Monitoring Engine"]
   IC17 -- "X" --> IAM["IC6 IAM & Data Governance"]
   IC17 -- "X" --> DPP["IC7 DPP Infrastructure"]
-  IC17 -- "✓" --> ARGO["IC15 Cloud Mfg Orchestrator"]
+  IC17 -- "X" --> ARGO["IC15 Cloud Mfg Orchestrator"]
 ```
 
 
@@ -32,4 +32,4 @@ flowchart LR
 | IC5 Resource Monitoring Engine | NTUA    | Infrastructure status and monitoring views                                               | Not ready |              | API spec, data model and polling/streaming approach are missing.                         |
 | IC6 IAM & Data Governance      | ODINS   | Registration, identity validation, role assignment, authorization checks                 | Partial   |              | Expected IAM/governance schemas are known, but final OpenAPI and token flow are missing. |
 | IC7 DPP Infrastructure         | ODINS   | DPP product lifecycle read/manage views                                                  | Partial   |              | NGSI-LD/Orion-LD direction is known, but final DPP API and entity schemas are missing.   |
-| IC15 Cloud Mfg Orchestrator    | NTUA    | Order and workflow status views                                                          | Ready     |              | Argo/Kubernetes workflow status schema is available as the starting contract.             |
+| IC15 Cloud Mfg Orchestrator    | NTUA    | Order and workflow status views                                                          | Partial   |              | Argo/Kubernetes workflow status is only a starting assumption; final IC15 API contract is missing. |
