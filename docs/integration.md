@@ -10,7 +10,7 @@ flowchart LR
 
   IC17 -- "X" --> EDC["IC1 UniMaaS EDC Connector"]
   IC17 -- "✓" --> KG["IC3 Knowledge Graph"]
-  IC17 -- "✓" --> FC["IC4 Federated Catalogue"]
+  IC17 -- "X" --> FC["IC4 Federated Catalogue"]
   IC17 -- "X" --> RME["IC5 Resource Monitoring Engine"]
   IC17 -- "X" --> IAM["IC6 IAM & Data Governance"]
   IC17 -- "X" --> DPP["IC7 DPP Infrastructure"]
@@ -24,12 +24,14 @@ flowchart LR
 ## Status Matrix
 
 
-| Component                      | Partner | Frontend capability                                                                      | Readiness | Swagger docs | Notes                                                                                 |
-| ------------------------------ | ------- | ---------------------------------------------------------------------------------------- | --------- | ------------ | ------------------------------------------------------------------------------------- |
-| IC1 UniMaaS EDC Connector      | FLM     | Dataset registration and transfer initiation from search/provider flows                  | Partial   |              | RDFService and RDFSink payload shapes are known from `edc-rdf`; final URL, auth, EDC version and endpoint list are missing. |
-| IC3 Knowledge Graph            | FLM     | Customer search and semantic query support                                               | Partial   | [swagger](https://unimaas-project-eu.github.io/central-kg/) | Central KG routes and query parameters are known; response schemas are still unspecified in the OpenAPI. |
-| IC4 Federated Catalogue        | FLM     | Catalogue search/read for customer search                                                | Ready     |              | EDC federated catalogue management API is available as the starting contract.             |
-| IC5 Resource Monitoring Engine | NTUA    | Infrastructure status and monitoring views                                               | Not ready |              | API spec, data model and polling/streaming approach are missing.                         |
-| IC6 IAM & Data Governance      | ODINS   | Registration, identity validation, role assignment, authorization checks                 | Partial   |              | Expected IAM/governance schemas are known, but final OpenAPI and token flow are missing. |
-| IC7 DPP Infrastructure         | ODINS   | DPP product lifecycle read/manage views                                                  | Partial   |              | NGSI-LD/Orion-LD direction is known, but final DPP API and entity schemas are missing.   |
-| IC15 Cloud Mfg Orchestrator    | NTUA    | Order and workflow status views                                                          | Partial   |              | Argo/Kubernetes workflow status is only a starting assumption; final IC15 API contract is missing. |
+| Component                      | Partner | Frontend capability                                                      | Readiness | Swagger docs                                                | Notes                                                                                              |
+| ------------------------------ | ------- | ------------------------------------------------------------------------ | --------- | ----------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| IC1 UniMaaS EDC Connector      | FLM     | Dataset registration and transfer initiation from search/provider flows  | Not ready |                                                             |                                                                                                    |
+| IC3 Knowledge Graph            | FLM     | Customer search and semantic query support                               | Partial   | [swagger](https://unimaas-project-eu.github.io/central-kg/) | Central KG routes and query parameters are known                                                   |
+| IC4 Federated Catalogue        | FLM     | Catalogue search/read for customer search                                | Not ready |                                                             |                                                                                                    |
+| IC5 Resource Monitoring Engine | NTUA    | Infrastructure status and monitoring views                               | Not ready |                                                             |                                                                                                    |
+| IC6 IAM & Data Governance      | ODINS   | Registration, identity validation, role assignment, authorization checks | Not ready |                                                             | Expected IAM/governance schemas are known, but final OpenAPI and token flow are missing.           |
+| IC7 DPP Infrastructure         | ODINS   | DPP product lifecycle read/manage views                                  | Not ready |                                                             |                                                                                                    |
+| IC15 Cloud Mfg Orchestrator    | NTUA    | Order and workflow status views                                          | Partial   |                                                             | Argo/Kubernetes workflow status is only a starting assumption. Final IC15 API contract is missing. |
+
+
