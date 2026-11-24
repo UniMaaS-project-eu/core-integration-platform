@@ -4,6 +4,7 @@ from app.routers import (
     cloud_mfg_orchestrator,
     dpp_infrastructure,
     edc_connector,
+    federated_catalogue,
     iam_data_governance,
     integration,
     intent_chatbot,
@@ -40,6 +41,7 @@ def create_app() -> FastAPI:
     app.include_router(integration.router)
     app.include_router(iam_data_governance.router)
     app.include_router(knowledge_graph.router)
+    app.include_router(federated_catalogue.router)
     app.include_router(edc_connector.router)
     app.include_router(intent_chatbot.router)
     app.include_router(cloud_mfg_orchestrator.router)
